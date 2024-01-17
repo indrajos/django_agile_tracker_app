@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Stories List{% endblock %}
+
+{% block content %}
+   <h2>Story List</h2>
+
+       {% for story in stories %}
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+            <h5 class="card-title">{{ story.title }}</h5>
+            <p class="card-text">Estimated Hours: {{ story.estimated_hours }}</p>
+            <p class="card-text">Total Spent Time: {{ story.total_hours_spent }}</p>
+            <a href="{% url 'task_list' story.id %}">View Tasks</a>
+            </div>
+        </div>
+
+       {% endfor %}
+
+    <a href="{% url 'create_story' %}" class="btn btn-primary">Create New Story</a>
+{% endblock %}
+</body>
+</html>

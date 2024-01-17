@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Task Detail: {{ task.title }}{% endblock %}
+
+{% block content %}
+    <h2>Task Detail: {{ task.title }}</h2>
+    <p>Status: {{ task.status }}</p>
+    <p>Estimated Hours: {{ task.estimated_hours }}</p>
+    <p>Total Task Hours Spent: {{ task.task_hours_spent }}</p>
+
+    <h3>Time Entries</h3>
+
+    {% for time_entry in task.timeentry_set.all %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Time Entry</h5>
+            <p class="card-text">Developer: {{ time_entry.developer }}</p>
+            <p class="card-text">Hours Spent: {{ time_entry.hours_spent }}</p>
+            <p class="card-text">Description: {{ time_entry.description }}</p>
+        </div>
+    </div>
+    {% empty %}
+        <p>There are no entries.</p>
+    {% endfor %}
+    <a href="{% url 'create_time_entry' task.id %}" class="btn btn-primary">Create Time Entry</a>
+{% endblock %}
+</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Time Entry{% endblock %}
+
+{% block content %}
+    <h2>Create time entry for: {{ task.title }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}  {# This line renders the entire form #}
+
+        <button type="submit" class="btn btn-primary">Create Time Entry</button>
+    </form>
+{% endblock %}

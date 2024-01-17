@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Task List{% endblock %}
+
+{% block content %}
+    <h2>Task list for: {{ story.title }}</h2>
+
+        {% for task in tasks %}
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'task_detail' task.id %}">{{ task.title }}</a></h5>
+            <p class="card-text">Status: {{ task.status }}</p>
+            <p class="card-text">Total Time Spent: {{ task.calculate_total_time_spent }}</p>
+            <a href="{% url 'create_time_entry' task.id %}">Create Time Entry</a>
+            </div>
+        </div>
+
+        {% empty %}
+            <p>No tasks available for this story.</p>
+        {% endfor %}
+
+    <a href="{% url 'create_task' story.id %}" class="btn btn-primary">Create New Task</a>
+{% endblock %}
+</body>
+</html>

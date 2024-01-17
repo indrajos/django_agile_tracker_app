@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Task{% endblock %}
+
+{% block content %}
+    <h2>Create task for: {{ story.title }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="story" value="{{ story.id }}">
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Create Task</button>
+    </form>
+{% endblock %}

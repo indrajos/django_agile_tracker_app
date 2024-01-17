@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Story: {{ story.title }}{% endblock %}
+
+{% block content %}
+    <h2>Story Detail: {{ story.title }}</h2>
+    <p>Estimated Hours: {{ story.estimated_hours }}</p>
+    <p>Total Task Hours Spent: {{ story.calculate_total_task_hours_spent }}</p>
+
+    <h3>Related Tasks:</h3>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <strong>{{ task.title }}</strong>
+                <br>Status: {{ task.status }}
+                <br>Task Hours Spent: {{ task.task_hours_spent }}
+            </li>
+        {% empty %}
+            <p>No tasks related to this story.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}
