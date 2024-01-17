@@ -1,4 +1,4 @@
-Django Agile Tracker App
+# Django Agile Tracker App
 
 Agile stories and tasks time tracker app using Django
 
